@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Example</title>
+
+  <style>
+    .complete {
+      text-decoration: line-through;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+  </style>
+
+</head>
+<body>
+  <h1>To Do List</h1>
+  <p onclick="toggleComplete(this)">Pay bills</p>
+  <p onclick="toggleComplete(this)">Wash car</p>
+  <p onclick="toggleComplete(this)">Get laundry</p>
+
+  <button onclick="hideCompletedTasks()">Hide Completed Tasks</button>
+
+  <button onclick="showAllTasks()">Show All Tasks</button>
+  <h4>Number of Items Completed: <span id="num-complete">0</span></h4>
+
+
+  <script>
+// 1) Clicking on a todo repeatedly should toggle between complete and incomplete, where a completed task has strikethrough text. (hint: make a CSS class called .complete - you’ll need to Google the CSS that makes strikethrough text.)
+    function toggleComplete(task) {
+      task.classList.toggle('complete');
+
+
+// Bonus: Add a new tag that displays a count of how many complete tasks there are in the list. It should automatically update each time tasks are marked as complete.
+//inside function toggleComplete 
+      var completedTasks = document.querySelectorAll('.complete');
+      var numCompleteTag = document.querySelector('#num-complete');
+      numCompleteTag.innerText = completedTasks.length;
+    }
+
+// 2) Add a button “Hide completed tasks” which will hide all tasks that have been marked complete. (hint: make a CSS class called .hidden)
+    function hideCompletedTasks() {
+      var completedTasks = document.querySelectorAll('.complete');
+      completedTasks.forEach(function(completedTasks) {
+        completedTasks.classList.add('hidden');
+      });
+    }
+// 3) Add a button “Show all tasks” which will unhide any hidden tasks to see the complete list.
+
+    function showAllTasks() {
+      var hiddenTasks = document.querySelectorAll('.hidden') // all with a class of hidden
+      hiddenTasks.forEach(function(hiddenTask) {
+        hiddenTask.classList.remove('hidden');
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+
